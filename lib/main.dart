@@ -18,8 +18,8 @@ class CrossFilterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Cross Filter',
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Roboto'),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Montserrat'),
       home: const SplashScreen(),
       routes: {
         '/splash': (context) => const SplashScreen(),

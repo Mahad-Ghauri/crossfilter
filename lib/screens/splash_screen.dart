@@ -35,16 +35,12 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: Colors.blue.shade400,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Center(
-                child: Text(
-                  'CROSS FILTER',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily:  'Montserrat',
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.2,
-                  ),
+              child: Center(
+                child: Image.asset(
+                  'assets/logo.png', 
+                  width: 100, 
+                  height: 100,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
@@ -53,9 +49,11 @@ class _SplashScreenState extends State<SplashScreen> {
             const Text(
               'Cross Filter',
               style: TextStyle(
-                fontSize: 24,
+                color: Colors.white,
+                fontFamily: 'Montserrat',
+                fontSize: 36,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                letterSpacing: 1.2,
               ),
             ),
             const SizedBox(height: 100),
