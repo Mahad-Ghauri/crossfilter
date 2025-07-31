@@ -13,7 +13,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Navigate to sign in screen after 3 seconds
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, '/signin');
     });
@@ -23,48 +22,65 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: Stack(
           children: [
-            // Logo container with blue background
-            Container(
-              width: 200,
-              height: 120,
-              decoration: BoxDecoration(
-                color: Colors.blue.shade400,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Center(
-                child: Image.asset(
-                  'assets/logo.png', 
-                  width: 100, 
-                  height: 100,
-                  fit: BoxFit.contain,
-                ),
+            // Center content
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 347,
+                    height: 137,
+                    child: Image.asset(
+                      'assets/logo.png',
+                      width: 347,
+                      height: 137,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  const Text(
+                    'Cross Filter',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Montserrat',
+                      fontSize: 36,
+                      fontWeight: FontWeight.w900, // Thicker font
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 40),
-            // App name
-            const Text(
-              'Cross Filter',
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Montserrat',
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.2,
+            // Footer content at bottom
+            Positioned(
+              bottom: 24,
+              left: 0,
+              right: 0,
+              child: Column(
+                children: [
+                  const Text(
+                    'Powered by Cross Filter',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Montserrat',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Design By tech maria',
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      color: Colors.grey[600],
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(height: 100),
-            // Footer text
-            const Text(
-              'Powered by Cross Filter',
-              style: TextStyle(fontSize: 12, color: Colors.grey),
-            ),
-            const Text(
-              'Design by tech media',
-              style: TextStyle(fontSize: 10, color: Colors.grey),
             ),
           ],
         ),

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -16,37 +18,23 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: const SizedBox(),
-      ),
+
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
               // Logo
               Center(
-                child: Container(
-                  width: 120,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.blue.shade400,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'CROSS FILTER',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1,
-                      ),
-                    ),
+                child: SizedBox(
+                  width: 189,
+                  height: 76,
+                  child: Image.asset(
+                    'assets/logo.png',
+                    width: 189,
+                    height: 76,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -55,16 +43,18 @@ class _SignInScreenState extends State<SignInScreen> {
               const Text(
                 'Welcome',
                 style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w900,
                   color: Colors.black,
                 ),
               ),
               const Text(
                 'Back!',
                 style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w900,
                   color: Colors.black,
                 ),
               ),
@@ -92,9 +82,18 @@ class _SignInScreenState extends State<SignInScreen> {
                       Icons.person_outline,
                       color: Colors.grey.shade600,
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFFA8A8A9),
+                        width: 2.0,
+                      ), // Focused border color
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
+                      borderSide: BorderSide(
+                        color: Color(0xFFA8A8A9),
+                        width: 2.0,
+                      ),
                     ),
                     filled: true,
                     fillColor: Colors.white,
@@ -139,9 +138,18 @@ class _SignInScreenState extends State<SignInScreen> {
                         });
                       },
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFFA8A8A9),
+                        width: 2.0,
+                      ), // Focused border color
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
+                      borderSide: BorderSide(
+                        color: Color(0xFFA8A8A9),
+                        width: 2.0,
+                      ),
                     ),
                     filled: true,
                     fillColor: Colors.white,
