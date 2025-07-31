@@ -19,6 +19,7 @@ class _HomeWithNavbarScreenState extends State<HomeWithNavbarScreen> {
           'Home page',
           style: TextStyle(
             color: Colors.grey,
+            fontFamily: 'Montserrat',
             fontSize: 16,
             fontWeight: FontWeight.normal,
           ),
@@ -43,91 +44,107 @@ class _HomeWithNavbarScreenState extends State<HomeWithNavbarScreen> {
           ),
         ],
       ),
-      drawer: Container(
-        width: MediaQuery.of(context).size.width * 0.75,
-        child: Drawer(
-          backgroundColor: const Color(0xFFE8F4FD),
+      drawer: Drawer(
+        child: Container(
+          width: 279,
+          decoration: BoxDecoration(
+            color: Color(0xFFD9D9D9), // Gray background
+            border: Border.all(
+              color: Color(0xFF4392F9), // Blue border
+              width: 2,
+            ),
+          ),
           child: Column(
             children: [
-              // Header with logo
+              // Header section with logo
               Container(
-                height: 180,
+                height: 200,
                 width: double.infinity,
-                color: const Color(0xFFE8F4FD),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Color(0xFFD9D9D9),
+                  border: Border(
+                    bottom: BorderSide(color: Color(0xFF4392F9), width: 1),
+                  ),
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 40),
+                    // Logo placeholder - replace with your actual logo
                     Container(
-                      width: 120,
-                      height: 60,
+                      width: 80,
+                      height: 80,
                       decoration: BoxDecoration(
-                        color: Colors.blue.shade400,
-                        borderRadius: BorderRadius.circular(8),
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                        border: Border.all(color: Color(0xFF4392F9), width: 2),
                       ),
-                      child: const Center(
-                        child: Text(
-                          'CROSS FILTER',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1,
-                          ),
-                        ),
+                      child: Image.asset(
+                        'assets/logo.png',
+                        width: 60,
+                        height: 60,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Icon(
+                            Icons.image,
+                            size: 40,
+                            color: Color(0xFF4392F9),
+                          );
+                        },
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Cross Filter',
+                    SizedBox(height: 16),
+                    Text(
+                      'App Name',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color(0xFF4392F9),
                       ),
                     ),
                   ],
                 ),
               ),
+
               // Menu items
               Expanded(
-                child: Container(
-                  color: const Color(0xFFBBDEFB),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    children: [
-                      _buildMenuItem(Icons.home, 'Home', true),
-                      _buildMenuItem(Icons.new_releases, 'New Products', false),
-                      _buildMenuItem(
-                        Icons.location_on,
-                        'Dealer Locator',
-                        false,
-                      ),
-                      _buildMenuItem(Icons.person, 'Profile', false),
-                      _buildMenuItem(
-                        Icons.subscriptions,
-                        'Subscription',
-                        false,
-                      ),
-                      _buildMenuItem(Icons.contact_mail, 'Contact Us', false),
-                      _buildMenuItem(Icons.feedback, 'App Feedback', false),
-                    ],
-                  ),
-                ),
-              ),
-              // Footer
-              Container(
-                color: const Color(0xFFBBDEFB),
-                padding: const EdgeInsets.all(16),
-                child: const Column(
+                child: ListView(
+                  padding: EdgeInsets.zero,
                   children: [
-                    Text(
-                      '© 2025 Cross Filter',
-                      style: TextStyle(fontSize: 12, color: Colors.black),
+                    _buildDrawerItem(
+                      icon: Icons.home,
+                      title: 'Home',
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
                     ),
-                    Text(
-                      'Design by tech maria',
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
+                    _buildDrawerItem(
+                      icon: Icons.person,
+                      title: 'Profile',
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    _buildDrawerItem(
+                      icon: Icons.settings,
+                      title: 'Settings',
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    _buildDrawerItem(
+                      icon: Icons.help,
+                      title: 'Help',
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    Divider(color: Color(0xFF4392F9), thickness: 1),
+                    _buildDrawerItem(
+                      icon: Icons.logout,
+                      title: 'Logout',
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
                     ),
                   ],
                 ),
@@ -148,35 +165,24 @@ class _HomeWithNavbarScreenState extends State<HomeWithNavbarScreen> {
     );
   }
 
-  Widget _buildMenuItem(IconData icon, String title, bool isSelected) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-      decoration: BoxDecoration(
-        color: isSelected ? Colors.blue.shade100 : Colors.transparent,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: ListTile(
-        leading: Icon(
-          icon,
-          color: isSelected ? Colors.blue : Colors.black54,
-          size: 20,
+  Widget _buildDrawerItem({
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return ListTile(
+      leading: Icon(icon, color: Color(0xFF4392F9), size: 24),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: 16,
+          color: Colors.black87,
+          fontWeight: FontWeight.w500,
         ),
-        title: Text(
-          title,
-          style: TextStyle(
-            color: isSelected ? Colors.blue : Colors.black,
-            fontSize: 14,
-            fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-          ),
-        ),
-        dense: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-        onTap: () {
-          if (title == 'New Products') {
-            Navigator.pushNamed(context, '/home-without-navbar');
-          }
-        },
       ),
+      onTap: onTap,
+      hoverColor: Color(0xFF4392F9).withOpacity(0.1),
+      splashColor: Color(0xFF4392F9).withOpacity(0.2),
     );
   }
 }
