@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -38,7 +40,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   'CROSS FILTER',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontFamily:  'Montserrat',
+                    fontSize: 36,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.2,
                   ),
